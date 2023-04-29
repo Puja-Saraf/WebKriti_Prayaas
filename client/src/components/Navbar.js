@@ -21,30 +21,38 @@ export default function Navbar({refs}) {
     };
   }, [navbarOpen]);
 
-  const location = useLocation();
+  // const location = useLocation();
+
+  // useEffect(() => {
+  //   console.log("location", location.pathname);
+  //   switch (location.pathname) {
+  //     case "/about":
+  //       scrollSmoothHandler(refs.aboutRef);
+  //       break;
+  //     case "/home":
+  //       scrollSmoothHandler(refs.homeRef);
+  //       break;
+  //     case "/event":
+  //       scrollSmoothHandler(refs.eventRef);
+  //       break;
+
+  //     default:
+  //     // ignore
+  //   }
+  // }, [location, refs]);
+
+  // const scrollSmoothHandler = ref => {
+  //   console.log("Triggered.");
+  //   ref.current.scrollIntoView({ behavior: "smooth" });
+  // };
+
 
   useEffect(() => {
-    console.log("location", location.pathname);
-    switch (location.pathname) {
-      case "/about":
-        scrollSmoothHandler(refs.aboutRef);
-        break;
-      case "/home":
-        scrollSmoothHandler(refs.homeRef);
-        break;
-      case "/event":
-        scrollSmoothHandler(refs.eventRef);
-        break;
-
-      default:
-      // ignore
-    }
-  }, [location, refs]);
-
-  const scrollSmoothHandler = ref => {
-    console.log("Triggered.");
-    ref.current.scrollIntoView({ behavior: "smooth" });
-  };
+    let url = window.location.href.split("/");
+    let target = url[url.length - 1].toLowerCase();
+    let element = document.getElementById(target);
+    element && element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
 
   return (
     <div className="fixed w-full top-0 z-20" ref={ref}>
@@ -53,12 +61,19 @@ export default function Navbar({refs}) {
       >
         <div className="container px-6 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-            <Link
+            <a
               className="text-2xl font-bold leading-relaxed mr-4 my-2 whitespace-nowrap text-[#636363] flex flex-row"
-              to="/home"
+              href="/"
+              onClick={(e) =>{
+                setNavbarOpen(!navbarOpen)
+                let about = document.getElementById("home");
+                e.preventDefault();
+                about && about.scrollIntoView({ behavior: "smooth", block: "start" });
+                window.history.pushState("", "", "/");
+              }}
             >
               <img src={logo} className="h-16 mt-2" alt="logo" />
-            </Link>
+            </a>
             <button
               className=" cursor-pointer leading-none mx-6 my-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
@@ -81,25 +96,35 @@ export default function Navbar({refs}) {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto justify-center lg:items-center">
               <li className="nav-item">
-                <Link
+                <a
                   className={
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
-                  to="/about"
-                  activeClassName="text-[#306F5E]"
-                  onClick={() => setNavbarOpen(!navbarOpen)}
+                  href="/"
+                  onClick={(e) =>{
+                    setNavbarOpen(!navbarOpen)
+                    let about = document.getElementById("about");
+                    e.preventDefault();
+                    about && about.scrollIntoView({ behavior: "smooth", block: "start" });
+                    window.history.pushState("about", "about", "/about");
+                  }}
                 >
                   About Us
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
                 <Link
                   className={
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
-                  to="/events"
-                  activeClassName="text-[#306F5E]"
-                  onClick={() => setNavbarOpen(!navbarOpen)}
+                  to="/"
+                  onClick={(e) =>{
+                    setNavbarOpen(!navbarOpen)
+                    let about = document.getElementById("events");
+                    e.preventDefault();
+                    about && about.scrollIntoView({ behavior: "smooth", block: "start" });
+                    window.history.pushState("events", "events", "/events");
+                  }}
                 >
                   Events
                 </Link>
@@ -110,8 +135,13 @@ export default function Navbar({refs}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   to="/stories"
-                  activeClassName="text-[#306F5E]"
-                  onClick={() => setNavbarOpen(!navbarOpen)}
+                  onClick={(e) =>{
+                    setNavbarOpen(!navbarOpen)
+                    let about = document.getElementById("stories");
+                    e.preventDefault();
+                    about && about.scrollIntoView({ behavior: "smooth", block: "start" });
+                    window.history.pushState("stories", "stories", "/stories");
+                  }}
                 >
                   Stories
                 </Link>
@@ -121,11 +151,10 @@ export default function Navbar({refs}) {
                   className={
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
-                  to="/alumnis"
-                  activeClassName="text-[#306F5E]"
+                  to="/testimonials"
                   onClick={() => setNavbarOpen(!navbarOpen)}
                 >
-                  Our Alumnis
+                  Testimonials
                 </Link>
               </li>
               <li className="nav-item">
@@ -134,7 +163,6 @@ export default function Navbar({refs}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   to="/faqs"
-                  activeClassName="text-[#306F5E]"
                   onClick={() => setNavbarOpen(!navbarOpen)}
                 >
                   FAQs
@@ -146,7 +174,6 @@ export default function Navbar({refs}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   to="/contact"
-                  activeClassName="text-[#306F5E]"
                   onClick={() => setNavbarOpen(!navbarOpen)}
                 >
                   Contact Us
@@ -157,11 +184,10 @@ export default function Navbar({refs}) {
                   className={
                 "mx-6 my-2 lg:py-2 lg:px-6 flex items-center text-base font-normal leading-snug hover:opacity-75 text-[#636363] lg:bg-[#306F5E] lg:text-white"
                   }
-                  to="/chat"
-                  activeClassName="text-[#306F5E]"
+                  to="/donate"
                   onClick={() => setNavbarOpen(!navbarOpen)}
                 >
-                  Chat with Us
+                  Donate Us
                 </Link>
               </li>
             </ul>

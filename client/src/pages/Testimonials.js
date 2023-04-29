@@ -4,16 +4,20 @@ import TestimonialCard from "../components/TestimonialCard";
 const testimonials = [
   {
     name: "Aavya Gupta",
-    desc: "As a former student of IIIT Allahabad and a volunteer with this NGO, I can say with confidence that their programs are making a real difference in the lives of young people in our community. I'm proud to have been a part of such a dedicated and passionate team."
-},
-{
-    name: "Aavya Gupta",
-    desc: "As a former student of IIIT Allahabad and a volunteer with this NGO, I can say with confidence that their programs are making a real difference in the lives of young people in our community. I'm proud to have been a part of such a dedicated and passionate team."
-},
-{
-    name: "Aavya Gupta",
-    desc: "As a former student of IIIT Allahabad and a volunteer with this NGO, I can say with confidence that their programs are making a real difference in the lives of young people in our community. I'm proud to have been a part of such a dedicated and passionate team."
-},
+    desc: "As a former student of IIIT Allahabad and a volunteer with Prayaas, I can say with confidence that their programs are making a real difference in the lives of young people in our community. I'm proud to have been a part of such a dedicated and passionate team.",
+  },
+  {
+    name: "Yash Gupta",
+    desc: "The skills and experience I gained through volunteering with Prayaas were invaluable to my personal and professional growth. I'm so grateful for the opportunity to give back to my community and make a positive impact on the lives of others.",
+  },
+  {
+    name: "Simran Kaur",
+    desc: "Working with Prayaas was one of the highlights of my time at IIIT Allahabad. It was a great way to connect with my peers and give back to our community, and I learned so much about leadership and teamwork along the way.",
+  },
+  {
+    name: "Rahul Singh",
+    desc: "I've seen firsthand the impact that Prayaas is making in the lives of young people in our community. Their programs are empowering students to achieve their full potential and break the cycle of poverty.",
+  },
 ];
 
 export default function Testimonials() {
@@ -26,7 +30,7 @@ export default function Testimonials() {
         </h1>
         <div className="mt-12">
           {testimonials.map((item, _index) => (
-            <TestimonialCard testimonial={item} ind={_index}/>
+            <TestimonialCard testimonial={item} ind={_index} />
           ))}
         </div>
 

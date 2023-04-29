@@ -1,5 +1,4 @@
 import React from "react";
-import banner from "../img/banner.svg";
 import home from "../img/home.svg";
 import ReactCurvedText from "react-curved-text";
 
@@ -18,7 +17,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center md:items-start justify-center mt-7 md:ml-10 lg:ml-20">
             <div>
               <button className="py-2 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#306F5E] text-white">
-                Add an Event
+                Organise an Event
               </button>
             </div>
             <div className="relative mt-4 md:ml-16 lg:ml-28">
@@ -41,6 +40,7 @@ export default function Home() {
               <a
                 href="https://youtu.be/pRC-e2etGyU"
                 target="_blank"
+                rel="noreferrer"
                 className="absolute top-[20%] right-[25%]"
               >
                 <i className="hover:opacity-75 ml-10 fa-solid fa-play p-6 rounded-full bg-[#F7D770]"></i>
@@ -55,9 +55,6 @@ export default function Home() {
             alt="home"
           />
         </div>
-      </div>
-      <div className="p-6 md:p-10 lg:p-14 bg-[#306F5E] text-white text-center text-lg md:text-2xl lg:text-3xl tracking-wide">
-        Be part of the breakthrough, to make someone's dream come true!
       </div>
     </div>
   );

@@ -152,7 +152,13 @@ export default function Navbar({refs}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   to="/testimonials"
-                  onClick={() => setNavbarOpen(!navbarOpen)}
+                  onClick={(e) =>{
+                    setNavbarOpen(!navbarOpen)
+                    let about = document.getElementById("testimonials");
+                    e.preventDefault();
+                    about && about.scrollIntoView({ behavior: "smooth", block: "start" });
+                    window.history.pushState("testimonials", "testimonials", "/testimonials");
+                  }}
                 >
                   Testimonials
                 </Link>
@@ -163,7 +169,13 @@ export default function Navbar({refs}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   to="/faqs"
-                  onClick={() => setNavbarOpen(!navbarOpen)}
+                  onClick={(e) =>{
+                    setNavbarOpen(!navbarOpen)
+                    let about = document.getElementById("faqs");
+                    e.preventDefault();
+                    about && about.scrollIntoView({ behavior: "smooth", block: "start" });
+                    window.history.pushState("faqs", "faqs", "/faqs");
+                  }}
                 >
                   FAQs
                 </Link>
@@ -174,7 +186,13 @@ export default function Navbar({refs}) {
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
                   }
                   to="/contact"
-                  onClick={() => setNavbarOpen(!navbarOpen)}
+                  onClick={(e) =>{
+                    setNavbarOpen(!navbarOpen)
+                    let about = document.getElementById("contact");
+                    e.preventDefault();
+                    about && about.scrollIntoView({ behavior: "smooth", block: "start" });
+                    window.history.pushState("contact", "contact", "/contact");
+                  }}
                 >
                   Contact Us
                 </Link>
@@ -188,6 +206,17 @@ export default function Navbar({refs}) {
                   onClick={() => setNavbarOpen(!navbarOpen)}
                 >
                   Donate Us
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={
+                "mx-6 my-2 lg:py-2 lg:px-6 flex items-center text-base font-normal leading-snug hover:opacity-75 text-[#636363] lg:text-[#306F5E] lg:border-2 lg:border-[#306F5E] "
+                  }
+                  to="/donate"
+                  onClick={() => setNavbarOpen(!navbarOpen)}
+                >
+                  Login
                 </Link>
               </li>
             </ul>

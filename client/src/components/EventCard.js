@@ -8,9 +8,9 @@ export default function EventCard({ event }) {
   return (
     <div className="flex flex-col items-center justify-center bg-[#F7D770]">
       <div className="">
-        <img src={event.img_url} className="w-[100%]" alt={event.title} />
+        <img src={event.img_url} className="w-[100%] h-60 m-auto" alt={event.title} />
       </div>
-      <div className="flex flex-col justify-center w-[90%] m-auto">
+      <div className="flex flex-col w-[90%] h-72">
         <h4 className="text-xl lg:text-2xl font-bold mt-4 lg:mt-6 text-[#306F5E]">
           {event.title}
         </h4>

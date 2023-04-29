@@ -4,6 +4,9 @@ import about from "../img/about.jpg";
 export default function About() {
   return (
     <section id="about">
+      <div className="p-6 md:p-10 lg:p-14 bg-[#306F5E] text-white text-center text-lg md:text-2xl lg:text-3xl tracking-wide">
+        Be part of the breakthrough, to make someone's dream come true!
+      </div>
       <div className="flex flex-col lg:flex-row mt-16 mb-16 lg:mt-24 lg:mb-24 w-[80%] m-auto">
       <div className="md:basis-2/3 text-base md:text-md lg:text-lg m-auto">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#2C3734]">About Us</h1>
@@ -22,7 +25,6 @@ export default function About() {
         <img src={about} className="mt-7 lg:mt-0 h-72 m-auto lg:w-[100%]" alt="about" />
       </div>
     </div>
-    <div className="border-2 border-solid border-[#636363] w-[90%] opacity-25 m-auto rounded-xl"></div>
     </section>
   );
 }

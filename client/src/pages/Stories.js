@@ -1,34 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MultiSlider from "../components/MultiSlider";
-
-const stories = [
-  {
-    story_img: "",
-    story_name: "Swati’s treatment",
-    story_desc:
-      "Swati Maurya, a student of Prayaas, was suffering from acute anaemia and was admitted in Swaroop Rani Hospital, Allahabad for around 9 days. Besides having other complications, her haemoglobin percentage had dropped down to as low as 5.2%. Her family was not in a position to deal with the situation financially. Prayaas helped the family by providing monetary support and blood units, owing to which the girl was able to recover and got discharged. Swati is one of the best students of Prayaas now and has continued to excel in her examinations.",
-  },
-  {
-    story_img: "",
-    story_name: "Swati’s treatment",
-    story_desc:
-      "Swati Maurya, a student of Prayaas, was suffering from acute anaemia and was admitted in Swaroop Rani Hospital, Allahabad for around 9 days. Besides having other complications, her haemoglobin percentage had dropped down to as low as 5.2%. Her family was not in a position to deal with the situation financially. Prayaas helped the family by providing monetary support and blood units, owing to which the girl was able to recover and got discharged. Swati is one of the best students of Prayaas now and has continued to excel in her examinations.",
-  },
-  {
-    story_img: "",
-    story_name: "Swati’s treatment",
-    story_desc:
-      "Swati Maurya, a student of Prayaas, was suffering from acute anaemia and was admitted in Swaroop Rani Hospital, Allahabad for around 9 days. Besides having other complications, her haemoglobin percentage had dropped down to as low as 5.2%. Her family was not in a position to deal with the situation financially. Prayaas helped the family by providing monetary support and blood units, owing to which the girl was able to recover and got discharged. Swati is one of the best students of Prayaas now and has continued to excel in her examinations.",
-  },
-  {
-    story_img: "",
-    story_name: "Swati’s treatment",
-    story_desc:
-      "Swati Maurya, a student of Prayaas, was suffering from acute anaemia and was admitted in Swaroop Rani Hospital, Allahabad for around 9 days. Besides having other complications, her haemoglobin percentage had dropped down to as low as 5.2%. Her family was not in a position to deal with the situation financially. Prayaas helped the family by providing monetary support and blood units, owing to which the girl was able to recover and got discharged. Swati is one of the best students of Prayaas now and has continued to excel in her examinations.",
-  },
-];
+import { api } from "../api";
+// const stories = [
+//   {
+//     img_url: "",
+//     story_name: "Swati’s treatment",
+//     story_desc:
+//       "Swati Maurya, a student of Prayaas, was suffering from acute anaemia and was admitted in Swaroop Rani Hospital, Allahabad for around 9 days. Besides having other complications, her haemoglobin percentage had dropped down to as low as 5.2%. Her family was not in a position to deal with the situation financially. Prayaas helped the family by providing monetary support and blood units, owing to which the girl was able to recover and got discharged. Swati is one of the best students of Prayaas now and has continued to excel in her examinations.",
+//   },
+//   {
+//     img_url: "",
+//     story_name: "Swati’s treatment",
+//     story_desc:
+//       "Swati Maurya, a student of Prayaas, was suffering from acute anaemia and was admitted in Swaroop Rani Hospital, Allahabad for around 9 days. Besides having other complications, her haemoglobin percentage had dropped down to as low as 5.2%. Her family was not in a position to deal with the situation financially. Prayaas helped the family by providing monetary support and blood units, owing to which the girl was able to recover and got discharged. Swati is one of the best students of Prayaas now and has continued to excel in her examinations.",
+//   },
+//   {
+//     img_url: "",
+//     story_name: "Swati’s treatment",
+//     story_desc:
+//       "Swati Maurya, a student of Prayaas, was suffering from acute anaemia and was admitted in Swaroop Rani Hospital, Allahabad for around 9 days. Besides having other complications, her haemoglobin percentage had dropped down to as low as 5.2%. Her family was not in a position to deal with the situation financially. Prayaas helped the family by providing monetary support and blood units, owing to which the girl was able to recover and got discharged. Swati is one of the best students of Prayaas now and has continued to excel in her examinations.",
+//   },
+//   {
+//     img_url: "",
+//     story_name: "Swati’s treatment",
+//     story_desc:
+//       "Swati Maurya, a student of Prayaas, was suffering from acute anaemia and was admitted in Swaroop Rani Hospital, Allahabad for around 9 days. Besides having other complications, her haemoglobin percentage had dropped down to as low as 5.2%. Her family was not in a position to deal with the situation financially. Prayaas helped the family by providing monetary support and blood units, owing to which the girl was able to recover and got discharged. Swati is one of the best students of Prayaas now and has continued to excel in her examinations.",
+//   },
+// ];
 
 export default function Stories() {
+  const [stories, setStories] = useState([]);
+  useEffect(() => {
+    let isSubscribed = true;
+    const fetchData = async () => {
+      const data = await api.getAllStories();
+
+      if (isSubscribed) {
+        setStories(data.data);
+      }
+    };
+    fetchData().catch(console.error);
+
+    return () => (isSubscribed = false);
+  }, []);
+  if (stories.length === 0) {
+    return <></>;
+  }
   return (
     <section id="stories">
       <div className="mt-16 mb-16 lg:mt-24 lg:mb-24 w-[80%] m-auto">

@@ -1,6 +1,7 @@
 const Story = require("../../models/stories");
 const { v4: uuidv4 } = require("uuid");
 async function getAllStories(req, res) {
+  console.log("here is me");
   try {
     const stories = await Story.find();
     res.status(200).json(stories);

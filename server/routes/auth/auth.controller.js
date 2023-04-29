@@ -36,7 +36,7 @@ async function login(req, res) {
 }
 
 async function signup(req, res) {
-  const { email, password, name, gender } = req.body;
+  const { email, password, name } = req.body;
   const { type } = req.body;
   let is_alumni = false;
   let is_member = false;
@@ -67,7 +67,6 @@ async function signup(req, res) {
       password: hashed_password,
       is_alumni: is_alumni,
       is_member: is_member,
-      gender: gender,
     });
 
     const insertedUser = await newUser.save();

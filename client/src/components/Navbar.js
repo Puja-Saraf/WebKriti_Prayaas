@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../img/logo.png";
 
-export default function Navbar({refs}) {
+export default function Navbar({user}) {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const ref = useRef();
@@ -20,31 +20,6 @@ export default function Navbar({refs}) {
       document.removeEventListener("mousedown", clickedOutside);
     };
   }, [navbarOpen]);
-
-  // const location = useLocation();
-
-  // useEffect(() => {
-  //   console.log("location", location.pathname);
-  //   switch (location.pathname) {
-  //     case "/about":
-  //       scrollSmoothHandler(refs.aboutRef);
-  //       break;
-  //     case "/home":
-  //       scrollSmoothHandler(refs.homeRef);
-  //       break;
-  //     case "/event":
-  //       scrollSmoothHandler(refs.eventRef);
-  //       break;
-
-  //     default:
-  //     // ignore
-  //   }
-  // }, [location, refs]);
-
-  // const scrollSmoothHandler = ref => {
-  //   console.log("Triggered.");
-  //   ref.current.scrollIntoView({ behavior: "smooth" });
-  // };
 
 
   useEffect(() => {
@@ -208,17 +183,17 @@ export default function Navbar({refs}) {
                   Donate Us
                 </Link>
               </li>
-              <li className="nav-item">
+              {!user && <li className="nav-item">
                 <Link
                   className={
                 "mx-6 my-2 lg:py-2 lg:px-6 flex items-center text-base font-normal leading-snug hover:opacity-75 text-[#636363] lg:text-[#306F5E] lg:border-2 lg:border-[#306F5E] "
                   }
-                  to="/donate"
+                  to="/signup"
                   onClick={() => setNavbarOpen(!navbarOpen)}
                 >
-                  Login
+                  Sign Up
                 </Link>
-              </li>
+              </li>}
             </ul>
           </div>
         </div>

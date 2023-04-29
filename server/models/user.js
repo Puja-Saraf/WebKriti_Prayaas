@@ -4,7 +4,6 @@ const userSchema = mongoose.Schema({
   user_id: String,
   name: String,
   email: String,
-  gender: String,
   password: String,
   is_alumni: {
     type: Boolean,

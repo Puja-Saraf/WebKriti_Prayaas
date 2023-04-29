@@ -52,3 +52,8 @@ body{
       transform: translateY(0%);
     }
   }
+
+  .onboarding form input[type="radio"]:checked + label {
+    border: solid 2px #306F5E;
+    background-color: #F8F4E9;
+  }

@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import home from "../img/home.svg";
 import ReactCurvedText from "react-curved-text";
+
 
 export default function Home() {
   return (
     <div className="bg-[#F8F4E9]" id="home">
-      {/* <img src={banner} className="mt-24 w-[100%]" alt="logo" /> */}
+
       <div className="flex flex-col md:flex-row w-[100%] h-[24rem] lg:h-[29rem] xl:h-[35rem] mt-24 justify-center">
         <div className="basis-1/2 flex flex-col justify-center items-center md:items-start">
           <h1 className="md:ml-10 lg:ml-20 text-6xl lg:text-8xl font-bold text-[#2C3734]">
@@ -16,7 +17,10 @@ export default function Home() {
           </p>
           <div className="flex flex-col md:flex-row items-center md:items-start justify-center mt-7 md:ml-10 lg:ml-20">
             <div>
-              <button className="py-2 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#306F5E] text-white">
+              <button 
+              className="py-2 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#306F5E] text-white"
+              
+              >
                 Organise an Event
               </button>
             </div>

@@ -16,9 +16,24 @@ export default function Footer() {
                 Address: IIIT Allahabad, Jhalwa, Devghat, Prayagraj - 211012
               </p>
               <div className="flex flex-row text-2xl mt-4">
-                <i className="fa-brands fa-facebook-f mr-8"></i>
-                <i className="fa-brands fa-instagram mr-8"></i>
-                <i className="fa-brands fa-twitter"></i>
+                <a
+                  href="https://www.facebook.com/PrayaasIIITAOfficial/"
+                  target="_blank"
+                >
+                  <i className="fa-brands fa-facebook-f mr-8"></i>
+                </a>
+                <a
+                  href="https://www.instagram.com/prayaasiiita/"
+                  target="_blank"
+                >
+                  <i className="fa-brands fa-instagram mr-8"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/prayaas-iiita-9234b217a/"
+                  target="_blank"
+                >
+                  <i className="fa-brands fa-linkedin"></i>
+                </a>
               </div>
             </div>
           </div>

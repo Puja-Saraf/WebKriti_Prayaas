@@ -14,4 +14,6 @@ export const api = {
   createStory: (data) => API.post("/stories/story", data),
   updateEvent: (data) => API.put("/stories/story", data),
   deleteEvent: (data) => API.delete("/stories/story", data),
+
+  getSingleUser: (user_id) => API.get(`/users/user?user_id=${user_id}`),
 };

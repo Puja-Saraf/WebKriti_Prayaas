@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import donate from "../img/donate.jpg";
 import Navbar1 from "../components/Navbar1";
-import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";

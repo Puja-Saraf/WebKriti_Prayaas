@@ -67,7 +67,7 @@ export default function Team() {
         <h1 className="mt-32 text-3xl md:text-4xl lg:text-5xl font-semibold text-[#2C3734]">
           Our Team
         </h1>
-        <div className="grid grid-cols-4 gap-10 justify-center items-center mt-7">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-10 justify-center items-center mt-7">
             {team.map((item, _index) => (
               <div>
                 <TeamCard member={item}/>

@@ -7,9 +7,9 @@ const {
   deleteTestimonial,
 } = require("./testimonials.controller");
 const testimonialRouter = express.Router();
-testimonialRouter.get("/stories/", getAllTestimonials);
-testimonialRouter.get("/story/", getSingleTestimonial);
-testimonialRouter.post("/story/", createTestimonial);
-testimonialRouter.put("/story/", updateTestimonial);
-testimonialRouter.delete("/story/", deleteTestimonial);
+testimonialRouter.get("/testimonials/", getAllTestimonials);
+testimonialRouter.get("/testimonial/", getSingleTestimonial);
+testimonialRouter.post("/testimonial/", createTestimonial);
+testimonialRouter.put("/testimonial/", updateTestimonial);
+testimonialRouter.delete("/testimonial/", deleteTestimonial);
 module.exports = testimonialRouter;

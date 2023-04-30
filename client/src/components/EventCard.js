@@ -5,6 +5,7 @@ export default function EventCard({ event }) {
     event.content.length > 300
       ? event.content.slice(0, 300) + "..."
       : event.content;
+      console.log(event)
   return (
     <div className="flex flex-col items-center justify-center bg-[#F7D770]">
       <div className="">

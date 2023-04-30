@@ -20,11 +20,15 @@ import Navbar1 from "./components/Navbar1";
 import EventsGallery from "./pages/EventsGallery";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentCancel from "./pages/PaymentCancel";
+import CreateTestimonial from "./pages/CreateTestimonial";
+import CreateEvent from "./pages/CreateEvent";
+import CreateStory from "./pages/CreateStory";
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [user, setUser] = useState(null);
   const [amt, setAmt] = useState(0);
+  console.log(user);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -64,9 +68,9 @@ function App() {
                 <Navbar user={user} />
                 <Home user={user} />
                 <About />
-                <Events />
-                <Stories />
-                <Testimonials />
+                <Events user={user} />
+                <Stories user={user} />
+                <Testimonials user={user} />
                 <Faqs user={user} />
                 <Footer />
               </>
@@ -125,6 +129,46 @@ function App() {
             }
           />
           <Route path="/cancel" element={<PaymentCancel user={user} />} />
+
+          <Route
+            path="/createtestimonial"
+            element={
+              <>
+                {!user?.is_alumni && <Login />}
+                {user?.is_alumni && (
+                  <>
+                    <CreateTestimonial user={user} />
+                  </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/createevent"
+            element={
+              <>
+                {!user?.is_member && <Login />}
+                {user?.is_member && (
+                  <>
+                    <CreateEvent user={user} />
+                  </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/createstory"
+            element={
+              <>
+                {!user?.is_member && <Login />}
+                {user?.is_member && (
+                  <>
+                    <CreateStory user={user} />
+                  </>
+                )}
+              </>
+            }
+          />
 
           <Route path="/about" element={<Navigate to="/" />} />
           <Route path="/events" element={<Navigate to="/" />} />

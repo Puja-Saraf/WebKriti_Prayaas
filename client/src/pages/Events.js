@@ -3,7 +3,7 @@ import MultiSlider from "../components/MultiSlider";
 import { api } from "../api";
 import { useNavigate } from "react-router-dom";
 
-export default function Events() {
+export default function Events({ user }) {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -25,6 +25,11 @@ export default function Events() {
 
   const handleClick = () => {
     navigate("/eventsgallery");
+  };
+
+  const handleClickCreate = () => {
+    if (user?.is_member) navigate("/createevent");
+    else navigate("/");
   };
 
   return (
@@ -59,11 +64,16 @@ export default function Events() {
           />
         </div>
 
-        <div className="flex justify-center mt-12">
-          <button className="py-2 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#306F5E] text-white">
-            Add an Event
-          </button>
-        </div>
+        {user?.is_member && (
+          <div className="flex justify-center mt-12">
+            <button
+              className="py-2 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#306F5E] text-white"
+              onClick={handleClickCreate}
+            >
+              Add an Event
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

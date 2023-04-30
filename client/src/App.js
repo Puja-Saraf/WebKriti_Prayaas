@@ -17,9 +17,9 @@ import Team from "./pages/Team";
 import Donate from "./pages/Donate";
 import { api } from "./api";
 import Navbar1 from "./components/Navbar1";
-import CheckoutPage from "./pages/CheckoutPage";
 import EventsGallery from "./pages/EventsGallery";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentCancel from "./pages/PaymentCancel";
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -72,29 +72,59 @@ function App() {
               </>
             }
           />
-          <Route path="/signup" element={
-            <>
-            {!cookies["UserId"] && <Signup />}
-            {cookies["UserId"] && <Navigate to="/" />}
-            </>
-          }/>
-          <Route path="/login" element={
-            <>
-            {!cookies["UserId"] && <Login />}
-            {cookies["UserId"] && <Navigate to="/" />}
-            </>
-          }/>
-          <Route path="/team" element={<><Navbar1 user={user}/><Team/><Footer /></>} />
-          <Route path="/donate" element={
-            <>
-            {!cookies["UserId"] && <Login />}
-            {cookies["UserId"] && <><Donate user={user} func={donateAmount}/></>}
-            </>
-          }/>
-          <Route path="/success" element={
-            <PaymentSuccess user={user}/>
-          }/>
-          <Route path="/eventsgallery" element={<><Navbar1 user={user}/><EventsGallery/><Footer /></>} />
+          <Route
+            path="/signup"
+            element={
+              <>
+                {!cookies["UserId"] && <Signup />}
+                {cookies["UserId"] && <Navigate to="/" />}
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                {!cookies["UserId"] && <Login />}
+                {cookies["UserId"] && <Navigate to="/" />}
+              </>
+            }
+          />
+          <Route
+            path="/team"
+            element={
+              <>
+                <Navbar1 user={user} />
+                <Team />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/donate"
+            element={
+              <>
+                {!cookies["UserId"] && <Login />}
+                {cookies["UserId"] && (
+                  <>
+                    <Donate user={user} func={donateAmount} />
+                  </>
+                )}
+              </>
+            }
+          />
+          <Route path="/success" element={<PaymentSuccess user={user} />} />
+          <Route
+            path="/eventsgallery"
+            element={
+              <>
+                <Navbar1 user={user} />
+                <EventsGallery />
+                <Footer />
+              </>
+            }
+          />
+          <Route path="/cancel" element={<PaymentCancel user={user} />} />
 
           <Route path="/about" element={<Navigate to="/" />} />
           <Route path="/events" element={<Navigate to="/" />} />

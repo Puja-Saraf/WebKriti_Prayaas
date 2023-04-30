@@ -1,4 +1,4 @@
-<h1 align="center"><span><img src='client/src/img/logo.png' height='30px' style='margin-right:10px;'/></span>Prayaas</h1>
+<h1 align="center"><span><img src="https://images2.imgbox.com/bd/7d/PF8vffaH_o.png" height='30px' style='margin-right:10px;'/></span>Prayaas</h1>
 <h2 align="center">Let Dreams, Live On...</h2>
 
 ---
@@ -56,13 +56,17 @@ This command gets the server running on localhost port 8000 and the client runs 
 Head over to http://localhost:3000/ and enjoy! 🎉
 <br/>
 
-### 💻Postman Collection
+### 🌐 Postman Collection
 
 Click below to fork our postman collection and play around with our api
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/21161585-d244fa0d-a935-4848-b91d-8ae744a3b682?action=collection%2Ffork&collection-url=entityId%3D21161585-d244fa0d-a935-4848-b91d-8ae744a3b682%26entityType%3Dcollection%26workspaceId%3Db6ae606e-00db-4b39-b8a6-136f9150dd47)
 
-<!-- ## 🤝 Contributing
+### 💳 Payements
+
+You can use the cards mentioned <a href='https://stripe.com/docs/testing'>here</a> to test our payement gateway. Currently we are not accepting any real payements and the gateway runs in test mode.
+
+<!-- ### 🤝 Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated. The **Issues** tab is a good place to begin!
 

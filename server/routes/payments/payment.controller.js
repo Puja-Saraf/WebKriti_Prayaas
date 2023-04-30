@@ -1,5 +1,5 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const frontEndUrl = "http://localhost:3000";
+const frontEndUrl = "http://prayaas.onrender.com";
 async function checkout(req, res) {
   const { product } = req.body;
   console.log(product);

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 export default function Donate({ user, func }) {
-  const baseURL = "http://localhost:8000";
+  const baseURL = "http://prayaas.onrender.com/";
   const [amount, setAmount] = useState(0);
 
   func(amount);
@@ -62,12 +62,12 @@ export default function Donate({ user, func }) {
           placeholder="Enter Amount"
         />
         <div>
-        <button
-          className="mt-4 py-3 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#306F5E] text-white"
-          onClick={handleClick}
-        >
-          Donate Now
-        </button>
+          <button
+            className="mt-4 py-3 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#306F5E] text-white"
+            onClick={handleClick}
+          >
+            Donate Now
+          </button>
         </div>
       </div>
     </div>

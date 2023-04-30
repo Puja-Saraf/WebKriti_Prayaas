@@ -6,12 +6,12 @@ export default function Footer() {
     <section id="contact">
       <div className="bg-[#F7D770]">
         <div className="flex flex-row pt-12 pb-12 lg:px-32">
-          <div className="flex flex-col basis-1/2 m-auto justify-center">
-            <img src={logo} alt="logo" className="h-28 w-40" />
+          <div className="flex flex-col basis-1/2 m-auto justify-center items-center md:items-start">
+            <img src={logo} alt="logo" className="h-20 w-32 md:h-24 md:w-36 lg:h-28 lg:w-40" />
           </div>
-          <div className="basis-1/2 hidden lg:block">
-            <h1 className="text-lg font-bold mb-2">Contact Info:</h1>
-            <div className="text-md text-[#636363] mt-4">
+          <div className="basis-1/2">
+            <h1 className="text-md md:text-lg font-bold mb-2">Contact Info:</h1>
+            <div className="text-sm md:text-md text-[#636363] mt-4">
               <p>
                 Address: IIIT Allahabad, Jhalwa, Devghat, Prayagraj - 211012
               </p>

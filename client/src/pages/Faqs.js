@@ -1,5 +1,6 @@
 import React from "react";
 import FaqCard from "../components/FaqCard";
+import { useNavigate } from "react-router-dom";
 
 const faqs = [
   {
@@ -53,26 +54,49 @@ const faqs = [
   },
 ];
 
-export default function Faqs() {
+export default function Faqs({user}) {
   const faqs1 = faqs.slice(0, 4);
   const faqs2 = faqs.slice(4);
 
+  const navigate=useNavigate();
+
+  const handleClick=()=>{
+    if(user){
+      navigate("/donate")
+    }
+    else{
+      navigate("/login")
+    }
+  }
+
   return (
     <section id="faqs">
-    <div className="border-2 border-solid border-[#636363] w-[90%] opacity-25 m-auto rounded-xl"></div>
+      {/* <div className="border-2 border-solid border-[#636363] w-[90%] opacity-25 m-auto rounded-xl"></div> */}
+      <div className="flex flex-row p-6 md:p-10 lg:p-14 bg-[#306F5E] text-white text-center text-lg md:text-2xl lg:text-3xl tracking-wide">
+        <p className="basis-1/2 m-auto">Let's Help Other With Your Charity</p>
+        <div className="basis-1/2 m-auto">
+        <button 
+              className="py-2 px-4 md:py-3 md:px-6 text-center text-base md:text-xl leading-snug hover:opacity-75 bg-[#F7D770] text-[#2C3734]"
+              onClick={handleClick}
+              >
+                Donate Us
+              </button>
+        </div>
+      </div>
+      
       <div className="mt-16 mb-16 lg:mt-24 lg:mb-24 w-[80%] m-auto">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#2C3734]">
           FAQs
         </h1>
         <div className="flex flex-col lg:flex-row justify-center items-center mt-7">
-          <div className="m-auto">
+          <div className="m-auto lg:basis-1/2">
             {faqs1.map((item, _index) => (
-              <FaqCard faq={item} />
+              <FaqCard faq={item} key={_index} />
             ))}
           </div>
-          <div className="m-auto">
+          <div className="m-auto lg:basis-1/2">
             {faqs2.map((item, _index) => (
-              <FaqCard faq={item} />
+              <FaqCard faq={item} key={_index} />
             ))}
           </div>
         </div>

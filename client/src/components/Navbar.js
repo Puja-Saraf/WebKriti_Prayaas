@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../img/logo.png";
 
 export default function Navbar({user}) {
+  console.log(user)
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const ref = useRef();
@@ -84,7 +85,7 @@ export default function Navbar({user}) {
                     window.history.pushState("about", "about", "/about");
                   }}
                 >
-                  About Us
+                  About
                 </a>
               </li>
               <li className="nav-item">
@@ -155,7 +156,7 @@ export default function Navbar({user}) {
                   FAQs
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   className={
                     "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
@@ -169,10 +170,23 @@ export default function Navbar({user}) {
                     window.history.pushState("contact", "contact", "/contact");
                   }}
                 >
-                  Contact Us
+                  Contact
+                </Link>
+              </li> */}
+              <li className="nav-item">
+                <Link
+                  className={
+                    "mx-6 my-2 flex items-center text-base font-normal leading-snug text-[#636363] hover:opacity-75 hover:text-[#306F5E]"
+                  }
+                  to="/team"
+                  onClick={(e) =>{
+                    setNavbarOpen(!navbarOpen)
+                  }}
+                >
+                  Our Team
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   className={
                 "mx-6 my-2 lg:py-2 lg:px-6 flex items-center text-base font-normal leading-snug hover:opacity-75 text-[#636363] lg:bg-[#306F5E] lg:text-white"
@@ -182,16 +196,16 @@ export default function Navbar({user}) {
                 >
                   Donate Us
                 </Link>
-              </li>
+              </li> */}
               {!user && <li className="nav-item">
                 <Link
                   className={
                 "mx-6 my-2 lg:py-2 lg:px-6 flex items-center text-base font-normal leading-snug hover:opacity-75 text-[#636363] lg:text-[#306F5E] lg:border-2 lg:border-[#306F5E] "
                   }
-                  to="/signup"
+                  to="/login"
                   onClick={() => setNavbarOpen(!navbarOpen)}
                 >
-                  Sign Up
+                  Login
                 </Link>
               </li>}
             </ul>

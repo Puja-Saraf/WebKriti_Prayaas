@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import home from "../img/home.svg";
 import ReactCurvedText from "react-curved-text";
+import { useNavigate } from "react-router-dom";
 
 
-export default function Home() {
+export default function Home({user}) {
+
+  const navigate=useNavigate();
+
+  const handleClick=()=>{
+    if(user){
+      navigate("/donate")
+    }
+    else{
+      navigate("/login")
+    }
+  }
+  
   return (
     <div className="bg-[#F8F4E9]" id="home">
 
@@ -15,13 +28,13 @@ export default function Home() {
           <p className="md:ml-10 lg:ml-20 text-xl lg:text-3xl font-thin text-[#636363] mt-4">
             Let Dreams, Live On...
           </p>
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-center mt-7 md:ml-10 lg:ml-20">
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-center mt-8 md:ml-10 lg:ml-20">
             <div>
               <button 
-              className="py-2 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#306F5E] text-white"
-              
+              className="py-3 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#306F5E] text-white"
+              onClick={handleClick}
               >
-                Organise an Event
+                Donate Us
               </button>
             </div>
             <div className="relative mt-4 md:ml-16 lg:ml-28">

@@ -30,7 +30,7 @@ export default function Testimonials() {
         </h1>
         <div className="mt-12">
           {testimonials.map((item, _index) => (
-            <TestimonialCard testimonial={item} ind={_index} />
+            <TestimonialCard testimonial={item} key={_index} ind={_index} />
           ))}
         </div>
 

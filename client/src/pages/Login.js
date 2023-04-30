@@ -28,6 +28,10 @@ export default function Login() {
     }
   };
 
+  const handleClick=()=>{
+    navigate('/signup')
+  }
+
   const notify = (error) =>
     toast.error(error, {
       position: "top-left",
@@ -93,6 +97,12 @@ export default function Login() {
               <button className="text-white bg-[#306F5E] px-4 py-2 md:px-6 md:py-3 m-2 rounded-full font-semibold w-fit text-lg md:text-xl cursor-pointer hover:opacity-75">
                 Login
               </button>
+            </div>
+            <div className="mt-8 text-center text-lg">Don't have an account?&nbsp;&nbsp;
+                <button 
+                    className="cursor-pointer text-[#306F5E] underline underline-offset-2"
+                    onClick={handleClick}
+                >Signup</button>
             </div>
           </form>
         </div>

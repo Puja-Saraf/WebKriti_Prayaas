@@ -3,9 +3,7 @@ body{
 }
 
 .question-wrapper {
-    width: 35rem;
-    border-bottom: 1px solid #DEE4F1; 
-    margin: 0 auto;
+    border-bottom: 1px solid #63636322;
     padding: 1rem;
     transition: 1s;
   }

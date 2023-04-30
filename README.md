@@ -27,7 +27,7 @@ Follow the steps below, after cloning the repository:
 
 - Go to frontend/package.json and add the following line:-
   `"proxy":"http://localhost:8000",`
-- Go to client/src/api/index.js and change the base url from `http://prayaas.onrender.com/v1` to `http://localhost:8000/v1` (at line no. 2)
+- Go to client/src/api/index.js and change the base url from `https://prayaas.onrender.com/v1` to `http://localhost:8000/v1` (at line no. 2)
 
 ### ⏳ Installation
 

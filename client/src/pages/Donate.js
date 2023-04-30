@@ -6,7 +6,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 export default function Donate({ user, func }) {
   const baseURL = "https://prayaas.onrender.com/";
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(null);
 
   func(amount);
 

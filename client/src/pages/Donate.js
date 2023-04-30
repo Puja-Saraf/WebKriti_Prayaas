@@ -59,14 +59,16 @@ export default function Donate({ user, func }) {
           type="number"
           onChange={(e) => setAmount(e.target.value)}
           value={amount}
-          placeholder="0"
+          placeholder="Enter Amount"
         />
+        <div>
         <button
-          className="py-3 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#306F5E] text-white"
+          className="mt-4 py-3 px-6 text-center text-base leading-snug hover:opacity-75 bg-[#306F5E] text-white"
           onClick={handleClick}
         >
           Donate Now
         </button>
+        </div>
       </div>
     </div>
   );

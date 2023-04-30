@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 export default function Donate({ user, func }) {
-  const baseURL = "http://prayaas.onrender.com/";
+  const baseURL = "https://prayaas.onrender.com/";
   const [amount, setAmount] = useState(0);
 
   func(amount);

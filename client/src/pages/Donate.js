@@ -3,19 +3,43 @@ import donate from "../img/donate.jpg";
 import Navbar1 from "../components/Navbar1";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
-
-
-export default function Donate({ user , func}) {
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+export default function Donate({ user, func }) {
+  const baseURL = "http://localhost:8000";
   const [amount, setAmount] = useState(0);
 
-  if(amount>0) func(amount);
+  func(amount);
 
-  const navigate=useNavigate();
-
-  const handleClick=()=>{
-    if(amount>0) navigate('/checkout');
-    else navigate('/');
-  }
+  const navigate = useNavigate();
+  const payment = async () => {
+    try {
+      const stripe = await loadStripe(
+        `pk_test_51N2AgSSCj3qeyMGvAo1HPe2M6PWZuIxfKTL6skMnncKP8N5V9YQO0EBAarnZIP5FoHmOHV0qEefJCiDPAO01SNTj00UQk6m28P`
+      );
+      const product = {
+        name: "donation",
+        price: amount,
+      };
+      const d = await axios.post(`${baseURL}/v1/payments/pay`, {
+        product,
+      });
+      console.log(d.data.id);
+      const result = stripe.redirectToCheckout({
+        sessionId: d.data.id,
+      });
+      if (result.error) {
+        console.log(result.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleClick = () => {
+    if (amount > 0) {
+      payment();
+    } else navigate("/");
+  };
 
   return (
     <div

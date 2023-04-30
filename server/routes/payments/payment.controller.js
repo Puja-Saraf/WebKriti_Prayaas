@@ -1,31 +1,30 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const { v4: uuidv4 } = require("uuid");
-const domain = "http://localhost:3000";
 async function checkout(req, res) {
-  console.log("hemlo")
-  const { token, amount } = req.body;
-  console.log(req.body)
-  
-  const idempotencyKey = uuidv4();
-  return stripe.customers
-    .create({
-      email: token.email,
-      source: token,
-    })
-    .then((customer) => {
-      stripe.charges.create(
-        {
-          amount: +amount * 100,
+  const { product } = req.body;
+  console.log(product);
+  console.log(+product.price);
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items: [
+      {
+        // quantity: 1,
+        price_data: {
           currency: "inr",
-          customer: customer.id,
-          receipt_email: token.email,
+          product_data: {
+            name: product.name,
+          },
+          unit_amount: +product.price * 100,
         },
-        { idempotencyKey }
-      );
-    })
-    .then((result) => res.status(200).json(result))
-    .catch((err) => console.log(err));
+        quantity: 1,
+      },
+    ],
+    mode: "payment",
+    success_url: "http://localhost:3000/success",
+    cancel_url: "http://localhost:3000/cancel",
+  });
+  res.json({ id: session.id });
 }
+
 module.exports = {
   checkout,
 };

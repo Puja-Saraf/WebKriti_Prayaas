@@ -1,11 +1,6 @@
 /* eslint-disable */
 import "./App.css";
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -25,15 +20,15 @@ import Navbar1 from "./components/Navbar1";
 import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
-
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [user, setUser] = useState(null);
+  const [amt, setAmt] = useState(0);
 
   useEffect(() => {
     let isSubscribed = true;
     const fetchData = async () => {
-      const user_id=cookies["UserId"];
-      if(!user_id){
+      const user_id = cookies["UserId"];
+      if (!user_id) {
         return;
       }
       const data = await api.getSingleUser(user_id);
@@ -45,28 +40,27 @@ function App() {
     fetchData().catch(console.error);
 
     return () => {
-      isSubscribed = false
-      console.log("cleanup")
+      isSubscribed = false;
+      console.log("cleanup");
     };
   }, [cookies["UserId"]]);
 
-
-  let amount=0;
-  const donateAmount=(amount)=>{
-    amount=amount;
+  const donateAmount = (amount) => {
+    setAmt(amount);
     console.log(amount);
-  }
+  };
 
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route
-            exact path="/"
+            exact
+            path="/"
             element={
               <>
-                <Navbar user={user}/>
-                <Home user={user}/>
+                <Navbar user={user} />
+                <Home user={user} />
                 <About />
                 <Events />
                 <Stories />
@@ -76,31 +70,60 @@ function App() {
               </>
             }
           />
-          <Route path="/signup" element={
-            <>
-            {!cookies["UserId"] && <Signup />}
-            {cookies["UserId"] && <Navigate to="/" />}
-            </>
-          }/>
-          <Route path="/login" element={
-            <>
-            {!cookies["UserId"] && <Login />}
-            {cookies["UserId"] && <Navigate to="/" />}
-            </>
-          }/>
-          <Route path="/team" element={<><Navbar1 user={user}/><Team/><Footer /></>} />
-          <Route path="/donate" element={
-            <>
-            {!cookies["UserId"] && <Login />}
-            {cookies["UserId"] && <><Donate user={user} func={donateAmount}/></>}
-            </>
-          }/>
-          <Route path="/checkout" element={
-            <>
-            {!cookies["UserId"] && <Navigate to="/" />}
-            {cookies["UserId"] && <><CheckoutPage user={user} func={donateAmount}/></>}
-            </>
-          }/>
+          <Route
+            path="/signup"
+            element={
+              <>
+                {!cookies["UserId"] && <Signup />}
+                {cookies["UserId"] && <Navigate to="/" />}
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                {!cookies["UserId"] && <Login />}
+                {cookies["UserId"] && <Navigate to="/" />}
+              </>
+            }
+          />
+          <Route
+            path="/team"
+            element={
+              <>
+                <Navbar1 user={user} />
+                <Team />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/donate"
+            element={
+              <>
+                {!cookies["UserId"] && <Login />}
+                {cookies["UserId"] && (
+                  <>
+                    <Donate user={user} func={donateAmount} />
+                  </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <>
+                {!cookies["UserId"] && <Navigate to="/" />}
+                {cookies["UserId"] && (
+                  <>
+                    <CheckoutPage amt={amt} />
+                  </>
+                )}
+              </>
+            }
+          />
           <Route path="/about" element={<Navigate to="/" />} />
           <Route path="/events" element={<Navigate to="/" />} />
           <Route path="/stories" element={<Navigate to="/" />} />

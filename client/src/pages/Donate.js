@@ -4,9 +4,12 @@ import Navbar1 from "../components/Navbar1";
 import { useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import { Oval } from "react-loader-spinner";
+
 export default function Donate({ user, func }) {
   const baseURL = "https://prayaas.onrender.com";
   const [amount, setAmount] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   func(amount);
 
@@ -23,7 +26,7 @@ export default function Donate({ user, func }) {
       const d = await axios.post(`${baseURL}/v1/payments/pay`, {
         product,
       });
-      console.log(d.data.id);
+      // console.log(d.data.id);
       const result = stripe.redirectToCheckout({
         sessionId: d.data.id,
       });
@@ -36,14 +39,17 @@ export default function Donate({ user, func }) {
   };
   const handleClick = () => {
     if (amount > 0) {
+      setLoading(true);
       payment();
-    } else navigate("/");
+    } else{
+      navigate("/");
+    }
   };
 
   return (
     <div
-      className="bg-cover h-[100vh]"
-      style={{ backgroundImage: `url(${donate})` }}
+      className="bg-cover"
+      // style={{ backgroundImage: `url(${donate})` }}
     >
       <Navbar1 user={user} />
       <div className="mt-24 flex flex-col p-6 md:p-10 lg:p-14 bg-[#306F5E] text-white text-center text-lg md:text-2xl lg:text-3xl tracking-wide">
@@ -69,6 +75,7 @@ export default function Donate({ user, func }) {
           </button>
         </div>
       </div>
+      {loading && <div className="mt-8 flex justify-center"><Oval color="#306F5E" height={80} width={80} /></div>}
     </div>
   );
 }

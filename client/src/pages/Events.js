@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MultiSlider from "../components/MultiSlider";
 import { api } from "../api";
 import { useNavigate } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
 
 export default function Events({ user }) {
   const [events, setEvents] = useState([]);
@@ -19,9 +20,10 @@ export default function Events({ user }) {
 
     return () => (isSubscribed = false);
   }, []);
-  if (events.length === 0) {
-    return <></>;
-  }
+
+  // if (events.length === 0) {
+  //   return <></>;
+  // }
 
   const handleClick = () => {
     navigate("/eventsgallery");
@@ -40,29 +42,24 @@ export default function Events({ user }) {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#2C3734] justify-self-start">
             Our Events
           </h1>
-          <div
-            className="text-[#636363] hover:text-[#306F5E] cursor-pointer text-lg justify-self-end underline underline-offset-1"
-            onClick={handleClick}
-          >
-            View more
+          {events.length !== 0 && (
+            <div
+              className="text-[#636363] hover:text-[#306F5E] cursor-pointer text-lg justify-self-end underline underline-offset-1"
+              onClick={handleClick}
+            >
+              View more
+            </div>
+          )}
+        </div>
+        {events.length === 0 ? (
+          <div className="mt-10 flex justify-center">
+            <Oval color="#306F5E" height={80} width={80} />
           </div>
-        </div>
-        <div className="m-auto mt-10 hidden lg:block">
-          <MultiSlider
-            items={events}
-            count={3}
-            event={true}
-            testimonial={false}
-          />
-        </div>
-        <div className="m-auto mt-10 block lg:hidden">
-          <MultiSlider
-            items={events}
-            count={2}
-            event={true}
-            testimonial={false}
-          />
-        </div>
+        ) : (
+          <div className="m-auto mt-10">
+            <MultiSlider items={events} event={true} story={false} />
+          </div>
+        )}
 
         {user?.is_member && (
           <div className="flex justify-center mt-12">

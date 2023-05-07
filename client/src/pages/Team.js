@@ -69,7 +69,7 @@ export default function Team() {
         </h1>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-10 justify-center items-center mt-7">
             {team.map((item, _index) => (
-              <div>
+              <div key={_index}>
                 <TeamCard member={item}/>
               </div>
             ))}

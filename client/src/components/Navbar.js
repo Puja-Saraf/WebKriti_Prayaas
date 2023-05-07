@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../img/logo.png";
 
 export default function Navbar({user}) {
-  console.log(user)
+  // console.log(user)
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const ref = useRef();

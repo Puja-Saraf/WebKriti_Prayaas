@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MultiSlider from "../components/MultiSlider";
 import { api } from "../api";
 import { useNavigate } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
 
 export default function Stories({ user }) {
   const [stories, setStories] = useState([]);
@@ -19,10 +20,10 @@ export default function Stories({ user }) {
 
     return () => (isSubscribed = false);
   }, []);
-  console.log(stories);
-  if (stories.length === 0) {
-    return <></>;
-  }
+  // console.log(stories);
+  // if (stories.length === 0) {
+  //   return <></>;
+  // }
 
   const handleClick = () => {
     if (user?.is_member) navigate("/createstory");
@@ -32,18 +33,19 @@ export default function Stories({ user }) {
   return (
     <section id="stories">
       <div className="border-2 border-solid border-[#636363] w-[90%] opacity-25 m-auto rounded-xl"></div>
-      <div className="mt-16 mb-16 lg:mt-24 lg:mb-24 w-[90%] md:w-[70%] lg:w-[80%] m-auto">
+      <div className="mt-16 mb-16 lg:mt-24 lg:mb-24 w-[90%] lg:w-[80%] m-auto">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#2C3734]">
           Our Success Stories
         </h1>
-        <div className="m-auto mt-10">
-          <MultiSlider
-            items={stories}
-            count={1}
-            event={false}
-            testimonial={false}
-          />
-        </div>
+        {stories.length === 0 ? (
+          <div className="mt-10 flex justify-center">
+            <Oval color="#306F5E" height={80} width={80} />
+          </div>
+        ) : (
+          <div className="m-auto mt-10">
+            <MultiSlider items={stories} event={false} story={true} />
+          </div>
+        )}
 
         {user?.is_member && (
           <div className="flex justify-center mt-12">

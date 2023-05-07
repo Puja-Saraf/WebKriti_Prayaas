@@ -39,7 +39,7 @@ export default function EventsGallery() {
         </h1>
         <div className="grid grid-cols-4 gap-6 justify-center items-center mt-7">
           {donation.map((item, _index) => (
-            <div>
+            <div key={_index}>
               <img src={item.img} className="w-[100%]" alt="donation" />
             </div>
           ))}
@@ -52,7 +52,7 @@ export default function EventsGallery() {
         </h1>
         <div className="grid grid-cols-4 gap-6 justify-center items-center mt-7">
           {republic.map((item, _index) => (
-            <div>
+            <div key={_index}>
               <img src={item.img} className="w-[100%]" alt="donation" />
             </div>
           ))}

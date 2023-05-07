@@ -5,18 +5,18 @@ export default function EventCard({ event }) {
     event.content.length > 300
       ? event.content.slice(0, 300) + "..."
       : event.content;
-      console.log(event)
+      // console.log(event)
   return (
-    <div className="flex flex-col items-center justify-center bg-[#F7D770]">
+    <div className="flex flex-col items-center justify-center bg-[#F7D770] w-[95%] m-auto">
       <div className="">
-        <img src={event.img_url} className="w-[100%] h-60 m-auto" alt={event.title} />
+        <img src={event.img_url} className="h-60 m-auto" alt={event.title} />
       </div>
-      <div className="flex flex-col w-[90%] h-72">
-        <h4 className="text-xl lg:text-2xl font-bold mt-4 lg:mt-6 text-[#306F5E]">
+      <div className="flex flex-col w-[90%] h-[14rem] sm:h-[17rem] lg:h-[16rem]">
+        <h4 className="text-base md:text-lg lg:text-xl font-bold mt-2 lg:mt-4 text-[#306F5E]">
           {event.title}
         </h4>
-        <p className="text-sm mt-2 mb-4 lg:mb-6 text-[#636363] font-light leading-relaxed tracking-wide">
-          {desc}
+        <p className="text-xs sm:text-sm mt-2 mb-4 lg:mb-4 text-[#636363] font-light leading-relaxed tracking-wide">
+          {desc} 
         </p>
       </div>
     </div>

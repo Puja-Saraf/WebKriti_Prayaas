@@ -23,7 +23,7 @@ export default function CreateStory({ user }) {
       content: formData.content,
       img_url: formData.img_url,
     };
-    console.log(newObject);
+    // console.log(newObject);
     try {
       setLoading(true);
       const res = await api.createStory(newObject);

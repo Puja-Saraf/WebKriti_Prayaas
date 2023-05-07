@@ -1,6 +1,11 @@
 /* eslint-disable */
 import "./App.css";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
+
+import { api } from "./api";
+
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -10,12 +15,9 @@ import Testimonials from "./pages/Testimonials";
 import Faqs from "./pages/Faqs";
 import Footer from "./components/Footer";
 import Signup from "./pages/Signup";
-import { useCookies } from "react-cookie";
-import { useState, useEffect } from "react";
 import Login from "./pages/Login";
 import Team from "./pages/Team";
 import Donate from "./pages/Donate";
-import { api } from "./api";
 import Navbar1 from "./components/Navbar1";
 import EventsGallery from "./pages/EventsGallery";
 import PaymentSuccess from "./pages/PaymentSuccess";
@@ -28,7 +30,7 @@ function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [user, setUser] = useState(null);
   const [amt, setAmt] = useState(0);
-  console.log(user);
+  // console.log(user);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -53,7 +55,7 @@ function App() {
 
   const donateAmount = (amount) => {
     setAmt(amount);
-    console.log(amount);
+    // console.log(amount);
   };
 
   return (
@@ -117,7 +119,7 @@ function App() {
               </>
             }
           />
-          <Route path="/success" element={<PaymentSuccess user={user} />} />
+          <Route path="/success" element={<><Navbar1 user={user}/><PaymentSuccess user={user} /></>} />
           <Route
             path="/eventsgallery"
             element={

@@ -5,19 +5,19 @@ export default function StoryCard({ story, ind }) {
     story.content.length > 700
       ? story.content.slice(0, 700) + "..."
       : story.content;
-  console.log(story.img_url);
+  // console.log(story.img_url);
   return (
     <>
-      <div className="block lg:hidden">
-        <div className="flex flex-col items-center justify-center bg-white">
+      <div className="block lg:hidden w-[95%] m-auto">
+        <div className="flex flex-col items-center justify-center bg-white w-[100%]">
           <div className="basis-1/2">
             <img
               src={story.img_url}
-              className="w-[100%] h-60 m-auto"
+              className="h-80"
               alt={story.title}
             />
           </div>
-          <div className="flex flex-col justify-center w-[90%] h-96 m-auto basis-1/2">
+          <div className=" flex flex-col justify-center w-[90%] h-[25em] m-auto">
             <h4 className="text-xl lg:text-2xl font-bold mt-4 lg:mt-6 text-[#2C3734]">
               {story.title}
             </h4>
@@ -28,9 +28,9 @@ export default function StoryCard({ story, ind }) {
         </div>
       </div>
       <div className="hidden lg:block">
-        <div className="flex flex-row bg-white">
+        <div className="flex flex-row bg-white h-[30rem]">
           {ind % 2 === 0 && (
-            <div className="basis-2/5 w-[100%] h-[30rem]">
+            <div className="basis-2/5 w-[100%]">
               <img src={story.img_url} className="w-[100%] h-[100%]" alt="" />
             </div>
           )}
@@ -43,7 +43,7 @@ export default function StoryCard({ story, ind }) {
             </p>
           </div>
           {ind % 2 === 1 && (
-            <div className="basis-2/5 w-[100%] h-[30rem]">
+            <div className="basis-2/5 w-[100%]">
               <img src={story.img_url} className="w-[100%] h-[100%]" alt="" />
             </div>
           )}

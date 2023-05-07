@@ -21,7 +21,7 @@ export default function CreateTestimonial({ user }) {
       created_by: user.name,
       content: formData.content,
     };
-    console.log(newObject);
+    // console.log(newObject);
     try {
       setLoading(true);
       const res = await api.createTestimonial(newObject);

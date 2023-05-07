@@ -1,5 +1,5 @@
 import React from "react";
-import home from "../img/home.svg";
+import home from "../img/home.png";
 import ReactCurvedText from "react-curved-text";
 import { useNavigate } from "react-router-dom";
 

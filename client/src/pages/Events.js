@@ -47,7 +47,7 @@ export default function Events({ user }) {
               className="text-[#636363] hover:text-[#306F5E] cursor-pointer text-lg justify-self-end underline underline-offset-1"
               onClick={handleClick}
             >
-              View more
+              View Gallery
             </div>
           )}
         </div>

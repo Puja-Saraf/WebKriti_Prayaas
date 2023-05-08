@@ -19,18 +19,21 @@ export default function Footer() {
                 <a
                   href="https://www.facebook.com/PrayaasIIITAOfficial/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <i className="fa-brands fa-facebook-f mr-8"></i>
                 </a>
                 <a
                   href="https://www.instagram.com/prayaasiiita/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <i className="fa-brands fa-instagram mr-8"></i>
                 </a>
                 <a
                   href="https://www.linkedin.com/in/prayaas-iiita-9234b217a/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <i className="fa-brands fa-linkedin"></i>
                 </a>

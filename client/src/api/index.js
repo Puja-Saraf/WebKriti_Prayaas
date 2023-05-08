@@ -12,8 +12,8 @@ export const api = {
   getAllStories: () => API.get("/stories/stories"),
   getSingleStory: (story_id) => API.get(`/stories/story?story_id=${story_id}`),
   createStory: (data) => API.post("/stories/story", data),
-  updateEvent: (data) => API.put("/stories/story", data),
-  deleteEvent: (data) => API.delete("/stories/story", data),
+  updateStory: (data) => API.put("/stories/story", data),
+  deleteStory: (data) => API.delete("/stories/story", data),
 
   getAllTestimonials: () => API.get("/testimonials/testimonials"),
   getSingleTestimonial: (testimonial_id) =>

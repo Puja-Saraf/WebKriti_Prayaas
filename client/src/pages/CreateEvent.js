@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { api } from "../api";
 import { useNavigate } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
 // import { Oval } from "react-loader-spinner";
 
 export default function CreateEvent({ user }) {
@@ -38,8 +39,7 @@ export default function CreateEvent({ user }) {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-[100vh]">
-        {/* <Oval color="#fd2f6e" height={80} width={80} /> */}
-        Loading...
+        <Oval color="#306F5E" height={80} width={80} />
       </div>
     );
   }

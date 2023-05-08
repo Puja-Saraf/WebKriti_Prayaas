@@ -30,15 +30,15 @@ export default function MultiSlider({ items, event, story }) {
 
   const responsive2 = {
     desktop: {
-      breakpoint: { max: 4000, min: 1023 },
+      breakpoint: { max: 4000, min: 1024 },
       items: 1,
     },
     tablet: {
-      breakpoint: { max: 1023, min: 760 },
+      breakpoint: { max: 1024, min: 580 },
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 760, min: 0 },
+      breakpoint: { max: 580, min: 0 },
       items: 1,
     },
   };
